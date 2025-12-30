@@ -9,7 +9,7 @@ from config import BOT_TOKEN
 SERVICES = {
     'cyclic': 'https://telegram-bot-cyclic.cyclic.app',
     'koyeb': 'https://telegram-bot-koyeb.app',
-    'railway': 'https://your-app-name.up.railway.app',
+    'railway': 'https://tgbot-production-b230.up.railway.app',
     'render': 'https://telegram-bot-render.onrender.com'
 }
 
@@ -54,3 +54,4 @@ print("Webhook rotation system started!")
 while True:
     schedule.run_pending()
     time.sleep(60)
+
