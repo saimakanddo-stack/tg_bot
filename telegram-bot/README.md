@@ -1,0 +1,743 @@
+# Telegram Video Bot
+
+This bot provides video links from the Dub Fusion Hub blog based on a JSON data source.
+
+## Features
+
+- Deep linking support (e.g., `https://t.me/dubflixhub_bot?start=1`)
+- Mini App integration for watching videos
+- Asynchronous JSON data fetching
+
+## Setup Instructions
+
+1. **Install Dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configure the Bot:**
+   - Copy `.env.example` to `.env`.
+   - Open `.env` and set your `BOT_TOKEN`, `JSON_URL`, and `BLOG_URL`.
+
+3. **Run the Bot:**
+
+   ```bash
+   python bot.py
+   ```
+
+## JSON Structure
+
+Your `videos.json` should follow this format:
+
+```json
+[
+  {
+    "id": "series3",
+    "title": "Stranger Things : Season 3 (2016)",
+    "imageUrl": "https://www.themoviedb.org/t/p/original/uKYUR8GPkKRCksczYDJb3pwZauo.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "WEB-DL",
+    "info3_language": "Dual Audio",
+    "info4_type": "Series",
+    "language_info": "Dual Audio",
+    "info_subtitle": "",
+    "info5_views": 0,
+    "info6_status": "Full Season",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "",
+    "genre": "Drama, Fantasy, Mystery",
+    "resolution": "1080p | 720p | 480p",
+    "released": "2016",
+    "cast": "",
+    "storyline": "",
+    "screenshotLinks": [],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "ZIP Files",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "/381d986181eaf988af398870bc757508/Stranger.Things.S03.480p.NF.WEB-DL.AAC2.0.x264-MovieLinkBD.zip",
+            "file_size": "2.2 GB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "/7b30fe356bf338d147e4b36f28f18248/Stranger.Things.S03.720p.Hindi.English.Esubs.MovieLinkBD.com.zip",
+            "file_size": "2.8 GB"
+          },
+          {
+            "quality_text": "1080p",
+            "path": "/2fc0557e802835c3f0770c6ab6b9105c/Stranger.Things.S03.1080p.10Bit.Hindi.English.Msubs.MovieLinkBD.com.zip",
+            "file_size": "7.4 GB"
+          }
+        ]
+      }
+    ],
+    "visibility": "published",
+    "total_views": 0,
+    "createdAt": "2025-12-29T17:50:18.266Z",
+    "lastUpdated": "2025-12-30T02:45:22.614Z"
+  },
+  {
+    "id": "movie7",
+    "title": "Picture of Beauty (2017)",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766852207871_3fujpnwl1xs.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "WEB-DL",
+    "info3_language": "English",
+    "info4_type": "Movie",
+    "language_info": "English",
+    "info_subtitle": "18+ Alert ⛔",
+    "info5_views": 0,
+    "info6_status": "18+ Alert 🔞",
+    "enablePosterBlur": true,
+    "blurPercentage": 3,
+    "imdb": "3.5/10",
+    "genre": "Drama, Romance",
+    "resolution": "720p",
+    "released": "02 Apr 2021 (United Kingdom)",
+    "cast": "Taylor Sands, Danielle Rose, Pawel Hajnos",
+    "storyline": "Franek is a talented art forger and painter who along with his loyal assistant Hazel - herself a talented artist - are commisioned by a glamorous madam to produce a piece for her brothel to hopefully drum up more business. Although his subjects at the brothel are beautiful, he yearns for more and calls upon his assistant to find more models. Stephanie, a beautiful and strong minded political activist who freshly expelled from university for her views answers the call and takes an instant liking to the shy painter. Her young friend Julia would be a perfect subject too, but she has recently been arrested for escaping the bonds of her cruel and much older husband, who just happens to be an influential police officer. The group literally (and metaphorically) free Julia meaning that Franek can hopefully complete what should be his masterpiece and hopefully find love for himself.",
+    "screenshotLinks": [
+      "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766852709914_0nbl7euo2zag.jpg",
+      "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766852721068_1m650wlsd0i.jpg",
+      "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766852733246_1ltu4t386zz.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "720p",
+            "path": "/269e9b248640f51f5270c405b32f2bc9/MovieLinkBD.com%20-%20Picture.of.Beauty.2017.720p.English.AAC.WEBRip.h264.mp4",
+            "file_size": "734 MB"
+          }
+        ]
+      }
+    ],
+    "visibility": "published",
+    "total_views": 0,
+    "createdAt": "2025-12-27T16:30:32.129Z",
+    "lastUpdated": "2025-12-30T02:43:28.901Z"
+  },
+  {
+    "id": "series2",
+    "title": "Stranger Things : Season 2 (2016)",
+    "imageUrl": "https://www.themoviedb.org/t/p/original/uKYUR8GPkKRCksczYDJb3pwZauo.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "WEB-DL",
+    "info3_language": "Dual Audio",
+    "info4_type": "Series",
+    "language_info": "Dual Audio",
+    "info_subtitle": "",
+    "info5_views": 0,
+    "info6_status": "Full Season",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "",
+    "genre": "Drama, Fantasy, Mystery",
+    "resolution": "1080p | 720p | 480p",
+    "released": "2016",
+    "cast": "",
+    "storyline": "",
+    "screenshotLinks": [],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "/8c62b873bc1574b20bff1cf34fdb8f25/Stranger.Things.S02.480p.NF.WEB-DL.HIN-ENG.x264-MovieLinkBD.org.zip",
+            "file_size": "1.4 GB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "/10790eed34dacdce7ea91a8b51400ab9/Stranger.Things.S02.720p.Hindi.English.Esubs.MovieLinkBD.com.zip",
+            "file_size": "3.6 GB"
+          },
+          {
+            "quality_text": "1080p",
+            "path": "/7ab92a612a44d18947a78b4342162f45/Stranger.Things.S02.1080p.10Bit.BluRay.Hindi.English.Esubs.MovieLinkBD.com.zip",
+            "file_size": "6.5 GB"
+          }
+        ]
+      }
+    ],
+    "visibility": "published",
+    "total_views": 0,
+    "createdAt": "2025-12-29T17:42:31.499Z",
+    "lastUpdated": "2025-12-29T17:42:31.499Z"
+  },
+  {
+    "id": "series1",
+    "title": "Stranger Things : Season 1 (2016)",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1767029164801_xqtkx8bvhg.webp",
+    "info1_custom": "NEW",
+    "info2_quality": "WEB-DL",
+    "info3_language": "Dual Audio",
+    "info4_type": "Series",
+    "language_info": "Dual Audio",
+    "info_subtitle": "",
+    "info5_views": 0,
+    "info6_status": "Full Season",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "",
+    "genre": "Drama, Fantasy, Mystery",
+    "resolution": "1080p | 720p | 480p",
+    "released": "2016",
+    "cast": "",
+    "storyline": "",
+    "screenshotLinks": [],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "/2dc5bf033e90599707ef24938aa1bfca/Stranger.Things.S01.480p.NF.WEB-DL.HIN-ENG.x264-MovieLinkBD.org.zip",
+            "file_size": "1.31 GB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "/6c824bc9bcdc62afeda34d6d71a9b34a/Stranger.Things.S01.720p.Hindi.Eng.MovieLinkBD.com.zip",
+            "file_size": "3.3 GB"
+          },
+          {
+            "quality_text": "1080p",
+            "path": "/3b2bb73938fed74838db3a627cf68aa1/Stranger.Things.S01.1080p.10Bit.BluRay.Hindi.English.Esubs.MovieLinkBD.com.zip",
+            "file_size": "5.72 GB"
+          }
+        ]
+      }
+    ],
+    "visibility": "published",
+    "total_views": 0,
+    "createdAt": "2025-12-29T17:34:09.732Z",
+    "lastUpdated": "2025-12-29T17:34:09.732Z"
+  },
+  {
+    "id": "movie8",
+    "title": "Predator: Badlands (2025)",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766993269861_stkp3rx4j6g.webp",
+    "info1_custom": "NEW",
+    "info2_quality": "WEB-DL",
+    "info3_language": "Dual, Hindi, English",
+    "info4_type": "Movie",
+    "language_info": "Dual [Hindi-English]",
+    "info_subtitle": "Full HD",
+    "info5_views": 0,
+    "info6_status": "Online",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "7.5/10",
+    "genre": "Action, Adventure, Sci-Fi",
+    "resolution": "1080p | 720p | 480p",
+    "released": "07 Nov 2025 (United States)",
+    "cast": "Elle Fanning, Dimitrius Schuster-Koloamatangi",
+    "storyline": "A young Predator outcast from his clan finds an unlikely ally on his journey in search of the ultimate adversary.",
+    "screenshotLinks": [
+      "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766993584560_zvwhv85h1cn.jpg",
+      "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766993589606_kv08hy3n28.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "/b6282c5fcd14c9ab67edd927d7001eef/MovieLinkBD.com%20-%20Predator.Badlands.2025.480p.Dual%5BHindi-English%5D.AAC.WEBRip.h264.ESub.mkv",
+            "file_size": "358.6 MB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "/51254debed32ee996b7ca39e7134ac68/MovieLinkBD.com%20-%20Predator.Badlands.2025.720p.Dual%5BHindi-English%5D.AAC.WEBRip.h264.ESub.mkv",
+            "file_size": "992 MB"
+          },
+          {
+            "quality_text": "1080P",
+            "path": "/be894706e87d0cee942873ce77568e00/MovieLinkBD.com%20-%20Predator.Badlands.2025.1080p.Dual%5BHindi-English%5D.AAC.WEBRip.h264.ESub.mkv",
+            "file_size": "2.2 GB"
+          }
+        ]
+      }
+    ],
+    "visibility": "published",
+    "total_views": 0,
+    "createdAt": "2025-12-29T07:41:01.264Z",
+    "lastUpdated": "2025-12-29T07:42:47.494Z"
+  },
+  {
+    "id": "movie3",
+    "title": "Avatar (2009)",
+    "imageUrl": "https://www.themoviedb.org/t/p/original/unbrtK8zEjPANvNkbwhjpSxYWzN.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "WEB-DL",
+    "info3_language": "Dual, Hindi, English",
+    "info4_type": "Movie",
+    "language_info": "Dual [Hindi-English]",
+    "info_subtitle": "Part 1",
+    "info5_views": 0,
+    "info6_status": "Part 1",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "",
+    "genre": "Action, Adventure, Fantasy",
+    "resolution": "1080p | 720p | 480p",
+    "released": "2009",
+    "cast": "",
+    "storyline": "",
+    "screenshotLinks": [
+      "https://m.media-amazon.com/images/M/MV5BMjEyOTYyMzUxNl5BMl5BanBnXkFtZTcwNTg0MTUzNA@@._V1_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNzM2MDk3MTcyMV5BMl5BanBnXkFtZTcwNjg0MTUzNA@@._V1_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BODIyMDU3NDUzMF5BMl5BanBnXkFtZTcwNzg0MTUzNA@@._V1_.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "/1d1e32dba7b5975947202c9653c1a795/Avatar%202009%20BluRay%20EXTENDED%20Hindi%20English%20480p%20ESub%20-%20MovieLinkBD.com.mkv",
+            "file_size": "540 MB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "/2e01eb8438ea2ced3dea532f2b0944b5/Avatar%202009%20BluRay%20EXTENDED%20720p%20Hindi%20English%20AAC%205.1%20x264%20ESub%20-%20MovieLinkBD.com.mkv",
+            "file_size": "1.8 GB"
+          },
+          {
+            "quality_text": "1080p",
+            "path": "/2ba36c0e8a7dc4a157fdc9440f1756de/Avatar%202009%20%5BMovieLinkBD%20l.com%5DBluRay%20EXTENDED%201080p%20x265%2010bit%20Hindi%20English%20BD%205.1%20ESub.mkv",
+            "file_size": "1.9 GB"
+          }
+        ]
+      }
+    ],
+    "total_views": 0,
+    "createdAt": "2025-12-24T13:03:05.038Z",
+    "lastUpdated": "2025-12-29T07:17:18.100Z",
+    "visibility": "published"
+  },
+  {
+    "id": "movie4",
+    "title": "Avatar: The Way of Water (2022)",
+    "imageUrl": "https://www.themoviedb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "WEB-DL",
+    "info3_language": "Dual, Hindi, English",
+    "info4_type": "Movie",
+    "language_info": "Dual [Hindi-English]",
+    "info_subtitle": "Part 2",
+    "info5_views": 0,
+    "info6_status": "Part 2",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "",
+    "genre": "Action, Adventure, Fantasy, Sci-Fi,",
+    "resolution": "1080p | 720p | 480p",
+    "released": "",
+    "cast": "",
+    "storyline": "Avatar: The Way of Water follows Jake Sully, Neytiri, and their growing family (sons Neteyam, Lo'ak, daughter Tuk, adopted Kiri) as they flee their forest home after the human RDA returns, forcing them to seek refuge with the aquatic Metkayina clan, confronting new dangers and the resurrected Colonel Quaritch in a desperate fight to protect their family and Pandora.",
+    "screenshotLinks": [
+      "https://m.media-amazon.com/images/M/MV5BMTQxZTVlN2EtNmVkYS00NjhiLWI2MjYtYjgyNTEwOWNmZTk4XkEyXkFqcGc@._V1_QL75_UX414_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BOGI0ZGE0YWItNTExMC00NzYzLTlkMDUtMWNiNzNiZTM3NDkzXkEyXkFqcGc@._V1_QL75_UX414_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNDhiZTc0YmYtMzBiZi00ODVjLWFlNWItM2RmZDMyNTJlNmRmXkEyXkFqcGc@._V1_QL75_UX414_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BYTUyODRmYzktNTg2MS00MmEzLTlhNzgtZGMxMjVjYjgyOGI2XkEyXkFqcGc@._V1_QL75_UX414_.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkeBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "/38e1b2e959f12b74670e67da575553f7/Avatar%20The%20Way%20of%20Water%202022%20Hindi%20English%20480p%20%5BMovieLinkBD.com%5D%20ESub.mkv",
+            "file_size": "584 MB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "/322ab087473ce94588325a4796140ded/Avatar%20The%20Way%20of%20Water%202022%20720p%20%5BMovieLinkBD.com%5D%20Hindi%20English%20AAC%205.1%20x264%20ESub.mkv",
+            "file_size": "2.0 GB"
+          },
+          {
+            "quality_text": "1080p",
+            "path": "/edf4c81bc20b24297ff4273c1bbdc0ed/Avatar%20The%20Way%20of%20Water%202022%201080p%20%5BMovieLinkBD.com%5D%20Hindi%20English%20DD%205.1%20x264%20ESub.mkv",
+            "file_size": "4.5 GB"
+          }
+        ]
+      }
+    ],
+    "total_views": 0,
+    "createdAt": "2025-12-24T16:15:34.936Z",
+    "lastUpdated": "2025-12-29T07:17:15.448Z",
+    "visibility": "published"
+  },
+  {
+    "id": "movie5",
+    "title": "Five Nights at Freddy's (2023)",
+    "imageUrl": "https://www.themoviedb.org/t/p/original/uiWMy1h0Xlto9aE3DbKhXf8lPzK.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "WEB-DL",
+    "info3_language": "Dual, Hindi, English",
+    "info4_type": "Movie",
+    "language_info": "Dual [Hindi-English]",
+    "info_subtitle": "[ORG Hindi]",
+    "info5_views": 0,
+    "info6_status": "ORG Hindi",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "",
+    "genre": "Hollywood, Drama, Horror, Mystery",
+    "resolution": "1080p | 720p | 480p",
+    "released": "",
+    "cast": "",
+    "storyline": "A troubled security guard begins working at Freddy Fazbear's Pizzeria. While spending his first night on the job, he realizes the late shift at Freddy's won't be so easy to make it through.",
+    "screenshotLinks": [
+      "https://m.media-amazon.com/images/M/MV5BNjUxZDQ3NTktZTZlZC00M2ZhLWJmM2ItZDcyNGY5YzY2MTEyXkEyXkFqcGc@._V1_QL75_UX437_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNmFmY2ViNTAtNTNlOS00MThmLTg3MjUtNmIzMGE5YWUxMTE0XkEyXkFqcGc@._V1_QL75_UX409_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNWY5ZDk4MDItM2U1My00MWU1LWFhMGUtZjBmYmQ4YjRhYzI5XkEyXkFqcGc@._V1_QL75_UX437_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BYWRjOTI1MTgtMWU3Ni00YWVjLWEzODMtYzQ0OTQ3ODYzY2QwXkEyXkFqcGc@._V1_QL75_UX328_.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "/14a0fbdc8d6c381a4ecfaba73c4a2f9f/Five.Nights.at.Freddy%27s.2023.%5BMovieLinkBD.Com%5D.480p.BluRay.Hindi.English.Esubs.mkv",
+            "file_size": "376 MB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "/aa5f59e6bb24d4fc5e4ca67193ba4ec0/%5BMovieLinkBD.Com%5D%20Five%20Nights%20at%20Freddys%202023%20BluRay%20720p%20Hindi%20English%20AAC%205.1%20x264%20ESub.mkv",
+            "file_size": "1.2 GB"
+          },
+          {
+            "quality_text": "1080p",
+            "path": "/e704f6a03140fb8b2f16c524fbe03174/Five.Nights.at.Freddy%27s.2023.%5BMovieLinkBD.Com%5D.%201080p.10bit.BluRay.Hindi.English.Esubs.mkv",
+            "file_size": "1.9 GB"
+          }
+        ]
+      }
+    ],
+    "total_views": 0,
+    "createdAt": "2025-12-24T17:46:55.360Z",
+    "lastUpdated": "2025-12-29T07:17:12.714Z",
+    "visibility": "published"
+  },
+  {
+    "id": "natok1",
+    "title": "Shesh Porjonto | শেষ পর্যন্ত | Apurba | Mamo | Bangla Natok",
+    "imageUrl": "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766910307748_tccggv52rnh.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "",
+    "info3_language": "Bangla, বাংলা",
+    "info4_type": "Natok",
+    "language_info": "Bangla",
+    "info_subtitle": "Watch On YouTube",
+    "info5_views": 0,
+    "info6_status": "YouTube Play",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "",
+    "genre": "",
+    "resolution": "",
+    "released": "",
+    "cast": "",
+    "storyline": "ভার্সিটিতে খুব বিখ্যাত ছিল আবির মিলির প্রেম। সব সময় ওদের একসাথে দেখা যেত। আবির মিলির চাইতে তিন ইয়ার সিনিয়র। তাই মিলির আগে পাশ করে বেরিয়ে আসে সে। আবিরের ক্যাম্পাস ছাড়ার দিনেও হয় এক দৃশ্য। আবিররা পাঁচ ভাই বোন। দুই ভাই তিন বোন। বোনদের সবার বিয়ে হয়ে গেছে, বাকি শুধু আবিরের বড় ভাই সাবির। আট বাবা মারা যাবার পর থেকে সাবির পরিবারের সব দ্বায়িত্ব পালন করেছে। তাই নিজের বিয়েটাও আর করা হয়নি। আবির এবার ভাইয়ের বিয়ের ব্যাপারে সিরিয়াস। পাশের জেলার এক মেয়ের সাথে দেখা করাতে নিয়ে যায় সাবিরকে। মেয়েকে ভালো লেগে গেলে সেই দিনই তারা রওনা দেয় মেয়ের বাড়ীর উদ্দেশ্যে। মেয়ের বাড়ীতে পৌছায় আবিররা। সেখানে মিলিকে দেখে চমকে ওঠে আবির। মিলির বড় বোনই হচ্ছে জলি!",
+    "screenshotLinks": [
+      "https://cdn.jsdelivr.net/gh/saimakanddo-stack/dubflixhtb-json-data/data/images/1766910307748_tccggv52rnh.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "YouTube",
+        "server_info": "Watch On YouTube",
+        "qualities": [
+          {
+            "quality_text": "Auto",
+            "path": "https://youtu.be/V8_Jo_v3Lu8?si=k7KmR7iev9xw-IHs",
+            "file_size": "Unknown"
+          }
+        ]
+      }
+    ],
+    "visibility": "published",
+    "total_views": 0,
+    "createdAt": "2025-12-26T13:58:41.035Z",
+    "lastUpdated": "2025-12-29T07:17:09.895Z"
+  },
+  {
+    "id": "movie2",
+    "title": "Avatar: Fire and Ash (2025)",
+    "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZy6HZ9rlPWdACyWMwiPCjLyKjA3WW-hmDkmVj3QL21AAJhLQQ2yPUNF35Cxegoum6NyjCL2JFZ1dBuw7BwOp1y2UhMBm-CzS6SRwoTQE1ABPpsE88xuyVPppLlYNnvcNFppMsJo2_0q5Wg-OF7g1zket0Imujp89jF8XIKDSMwtjJt0sIEGnh6DLiWEU/s450/1000300022.jpg",
+    "info1_custom": "UPDATED",
+    "info2_quality": "HDTC",
+    "info3_language": "Hindi",
+    "info4_type": "Movie",
+    "language_info": "Hindi",
+    "info_subtitle": "[Hindi ORG] HDTC [Best Quality Print] Part 3",
+    "info5_views": 0,
+    "info6_status": "Part 3",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "7.6/10",
+    "genre": "Action, Adventure, Fantasy",
+    "resolution": "1080p | 720p | 480p",
+    "released": "19 Dec 2025 (United States)",
+    "cast": "Kate Winslet, Zoe SaldaÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ±a, Edie Falco",
+    "storyline": "Sequel of Avatar 2 (2022). The plot is unknown.",
+    "screenshotLinks": [
+      "https://i.imgbd.org/poster_9mcm1766145688.jpg",
+      "https://i.imgbd.org/poster_609y1766055300.jpg",
+      "https://i.imgbd.org/poster_a2av1766055329.jpg",
+      "https://i.imgbd.org/poster_sx0l1766145753.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "9b74f62275877058170c0a8bd5ae8db5/MovieLinkBD.com%20-%20Avatar.Fire.and.Ash.2025.480p.Hindi.AAC.HDTS.h264.mkv",
+            "file_size": "670 MB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "9445ec9b72186a8bf51b6dc12a570976/MovieLinkBD.com%20-%20Avatar.Fire.and.Ash.2025.720p.Hindi.AAC.HDTS.h264.mkv",
+            "file_size": "1.6 GB"
+          },
+          {
+            "quality_text": "1080p",
+            "path": "c0a11e98cf718af3188a8ecae3743fec/MovieLinkBD.com%20-%20Avatar.Fire.and.Ash.2025.1080p.Hindi.AAC.HDTS.h264.mkv",
+            "file_size": "2.9 GB"
+          }
+        ]
+      }
+    ],
+    "total_views": 0,
+    "createdAt": "2025-11-24T11:08:12.327Z",
+    "lastUpdated": "2025-12-29T07:17:07.029Z",
+    "visibility": "published"
+  },
+  {
+    "id": "movie1",
+    "title": "Easy A (2010)",
+    "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPueTCvTwg5KPefwrEyGsKKNPX6IB6m1Lri8vS2d3EZC0V8NpWov_k7jbpdFPaN3GxGMDe1kv3QcZM3zUj9rHnkulCYVJupEZzTRZSpXhJs-H3xgN8PFUTQCjogGy6uQ6usfjPrNrhgk4RL_9DdvYO0o3kfZ88kN95zuWPFeoFR5I2CgPF08FAwCc0G7zy/s450/easy%20a%202010.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "HD",
+    "info3_language": "Dual, Hindi, English",
+    "info4_type": "Movie",
+    "language_info": "Dual [Hindi-English]",
+    "info_subtitle": "",
+    "info5_views": 0,
+    "info6_status": "Full Movie",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "7/10",
+    "genre": "Comedy, Drama, Romance",
+    "resolution": "720p | 480p",
+    "released": "2010",
+    "cast": "Emma Stone, Amanda Bynes, Penn Badgley",
+    "storyline": "After a little white lie about losing her virginity gets out, a clean cut high school girl sees her life paralleling Hester Prynne's in \"The Scarlet Letter,\" which she is currently studying in school - until she decides to use the rumor mill to advance her social and financial standing.",
+    "screenshotLinks": [
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1Dwp8etyY4aQ0xocCJYkOCd4t3UhvgLacSaiRiZPH3anRIXgdl3J7_4ld56AzOdql9CLA8wUmgDOu17jGKWQE__BRB_jRSFHMU9eCvFAbiXX-a_N4FU6u1Hk9r3zl7ETntY1NQT7ir22BZMQtHpGPPHau7Z7C5hkZM75qBTbyTAXISud8AuYE8h4bxWvU/s1278/1.jpg",
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpM-wZFISwPZKOxQTwdacWdfi1suVtF1o3AHqQCp1acrK3xKU8WXXRCuVU-_vnqzd1y8IpaaPxberVzIj_lGkxtk6qgtxBaNX7QfM1WhSqWKAnN_Bw35UfYYkFqsCWO_Vh_z4QmBdAqY3qbOvzDJC7_ep3cyYCZDB_1Gg-ilTwiyrMGYOSNWsE5D8yoYNE/s1280/2.jpg",
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilIPBuVWqBsL581Rq79rmazfaNpcOsja5bpPS-zdeqAI8JOtyqoPoKAXv7BwUEuTHu6gSnCBWQZbi3ostliJ5Q4rctXPovggOldPIOIjYTzTZqUrio7nK9OdyNMkW3-EIPUS50tRgfbqDxuxoBHYOq8vBXmolENAQpIUCRBnLyh2-LLXHXKp7jtY9qiWFJ/s1280/3.jpg",
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8ol93dDd8H12GpBb4V21XYaOqhcPkAQFHOXoCyfaSQjNLNvUjp5KQ83q30zx4vEL1ovlwennpmoKDYmJ5q7xlbEyt8ePZfQI54v3-Yuq1eDpoq8qwPtkYSSz_-uFUUu5Y7HFuF3ltPV2aWFQf1UVdSOJq_bZa7HyQwqAyxSIvRBfEzaDOBxtiRoos831s/s1280/easy%20a%202010%20th.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "4c92e7f5a2ab5e7bd27b28764fc127b2/MovieLinkBD.com%20-%20Easy.A.2010.480p.Dual%5BHindi-English%5D.AAC.BluRay.h264.ESub.mkv",
+            "file_size": "303.65 MB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "13f947d06f243d164cf66fef643999d4/MovieLinkBD.com%20-%20Easy.A.2010.720p.Dual%5BHindi-English%5D.AAC.BluRay.h264.ESub.mkv",
+            "file_size": "833.26 MB"
+          }
+        ]
+      }
+    ],
+    "total_views": 0,
+    "createdAt": "2025-12-24T09:48:32.091Z",
+    "lastUpdated": "2025-12-29T07:17:04.467Z",
+    "visibility": "published"
+  },
+  {
+    "id": "movie6",
+    "title": "Tu Meri Main Tera Main Tera Tu Meri",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d4/Tu_Meri_Main_Tera_Main_Tera_Tu_Meri.jpg",
+    "info1_custom": "NEW",
+    "info2_quality": "HDTC",
+    "info3_language": "Hindi",
+    "info4_type": "Movie",
+    "language_info": "Hindi",
+    "info_subtitle": "- HDTC [The Best Quality]",
+    "info5_views": 0,
+    "info6_status": "Watch Now",
+    "enablePosterBlur": false,
+    "blurPercentage": 10,
+    "imdb": "",
+    "genre": "Adventure, Comedy, Romance",
+    "resolution": "1080p | 720p | 480p",
+    "released": "25 Dec 2025 (India)",
+    "cast": "Kartik Aaryan, Ananya Panday, Neena Gupta",
+    "storyline": "Two people fall in love while finding themselves, but family pressures challenge their relationship. They part, hoping to meet again.",
+    "screenshotLinks": [
+      "https://i.ibb.co/qMBYLYfH/Snapshot-10.jpg",
+      "https://i.ibb.co/Y4XsqX50/Snapshot-16.jpg",
+      "https://i.ibb.co/TqHCYZCQ/Snapshot-20.jpg",
+      "https://i.ibb.co/gbJqSn7N/Snapshot-21.jpg"
+    ],
+    "downloadOptions": [
+      {
+        "server": "MovieLinkBD",
+        "server_info": "Fast Server",
+        "qualities": [
+          {
+            "quality_text": "480p",
+            "path": "/bdd654f09b26bbe213c651b282e729b6/MovieLinkBD.com%20-%20Tu.Meri.Main.Tera.Main.Tera.Tu.Meri.2025.480p.Hindi.AAC.HDTC.h264.mkv",
+            "file_size": "479.56 MB"
+          },
+          {
+            "quality_text": "720p",
+            "path": "/13ea2ba6abdf9a0d0c75580d3d04b5e3/MovieLinkBD.com%20-%20Tu.Meri.Main.Tera.Main.Tera.Tu.Meri.2025.720p.Hindi.AAC.HDTC.h264.mkv",
+            "file_size": "1.1 GB"
+          },
+          {
+            "quality_text": "1080p",
+            "path": "/4e1d13097673bb1ef4cab2abadda11d8/MovieLinkBD.com%20-%20Tu.Meri.Main.Tera.Main.Tera.Tu.Meri.2025.1080p.Hindi.AAC.HDTC.h264.mkv",
+            "file_size": "2.34 GB"
+          }
+        ]
+      }
+    ],
+    "visibility": "published",
+    "total_views": 0,
+    "createdAt": "2025-12-25T12:58:09.703Z",
+    "lastUpdated": "2025-12-29T07:05:58.707Z"
+  }
+]
+```
+
+---
+
+## 🔒 Multi-Service Manual Deployment: সম্পূর্ণ ওয়াকথ্রু ও টাস্ক গাইড
+
+### 🎯 প্রকল্প লক্ষ্য
+
+GitHub Public না করে ৪টি আলাদা ফ্রি সার্ভিসে (Railway, Render, Cyclic, Koyeb) Telegram Bot ম্যানুয়ালি ডেপ্লয় করা এবং ২৪/৭ চালু রাখা।
+
+### 📊 টাইমলাইন ও রিসোর্স
+
+- **মোট সময়:** ৪-৬ ঘণ্টা
+- **খরচ:** $০.০০ (সম্পূর্ণ ফ্রি)
+- **প্রযুক্তি:** Python, Bash, Web Interfaces
+
+---
+
+### 🚀 পর্ব ১: প্রস্তুতি
+
+#### টাস্ক ১.১: একাউন্ট তৈরি
+
+সফলতা মাপকাঠি: ৪টি সার্ভিসে একাউন্ট তৈরি ও verified
+
+| সার্ভিস | লিঙ্ক | সাইনআপ মেথড | নোট |
+| :--- | :--- | :--- | :--- |
+| Railway | [railway.app](https://railway.app) | GitHub দিয়ে | Free টায়ার সিলেক্ট করুন |
+| Render | [render.com](https://render.com) | GitHub দিয়ে | Credit Card verify (no charge) |
+| Cyclic | [cyclic.sh](https://cyclic.sh) | GitHub দিয়ে | Instant access |
+| Koyeb | [koyeb.com](https://koyeb.com) | Email দিয়ে | Free টায়ার সিলেক্ট |
+
+#### টাস্ক ১.২: বট মেটেরিয়াল প্রস্তুত
+
+সফলতা মাপকাঠি: ৫টি ফাইল তৈরি ও টেস্ট করা
+
+**ফাইল স্ট্রাকচার:**
+
+```text
+telegram-bot-manual/
+├── bot.py                    # আপনার মেইন বট কোড
+├── config.py                 # কনফিগারেশন হ্যান্ডলার
+├── .env                      # API Keys ও গোপন ফাইল
+├── .env.example              # .env এর টেম্পলেট
+├── requirements.txt          # Python packages
+├── runtime.txt              # Python version
+├── railway.json             # Railway configuration
+├── render.yaml              # Render configuration
+├── Dockerfile               # Koyeb configuration
+├── Procfile                 # Heroku-style config
+└── README.md                # এই ডকুমেন্টেশন
+```
+
+---
+
+### 🛠️ পর্ব ২: বট কোড প্রস্তুত
+
+আপনার `bot.py` ইতিমধ্যে Flask (Health Check) এবং Webhook সাপোর্ট সহ আপডেট করা হয়েছে। এটি লোকালিতে এবং ক্লাউডে সমানভাবে কাজ করবে।
+
+#### টাস্ক ২.২: লোকাল টেস্টিং
+
+```bash
+# 1. প্যাকেজ ইন্সটল
+pip install -r requirements.txt
+
+# 2. টেস্ট রান
+python bot.py
+```
+
+---
+
+### 📤 পর্ব ৩: ম্যানুয়াল ডেপ্লয়মেন্ট
+
+#### টাস্ক ৩.১: Railway.app এ ম্যানুয়াল ডেপ্লয়
+
+1. **New Project** -> **Empty Project** সিলেক্ট করুন।
+2. **Settings** -> **Variables** এ `BOT_TOKEN`, `JSON_URL`, এবং `PORT=8080` দিন।
+3. **Manual Deployment** এর জন্য ZIP ফাইল আপলোড করুন।
+
+#### টাস্ক ৩.২: Render.com এ ম্যানুয়াল ডেপ্লয়
+
+1. **New** -> **Web Service** সিলেক্ট করুন।
+2. **Advanced** এ Environment Variables যোগ করুন।
+3. Deployment ZIP আপলোড করুন।
+
+#### টাস্ক ৩.৩: Cyclic.sh এ ম্যানুয়াল ডেপ্লয়
+
+1. **Create App** -> **Deploy without GitHub**।
+2. ফাইলগুলো আলাদা আলাদা আপলোড করুন এবং Environment Variables সেট করুন।
+
+#### টাস্ক ৩.৪: Koyeb.com এ ম্যানুয়াল ডেপ্লয়
+
+- **Option A (Docker):** Dockerfile ব্যবহার করে Docker Hub এ পুশ করে ডেপ্লয় করুন।
+- **Option B (CLI):** Koyeb CLI ব্যবহার করে সরাসরি ডেপ্লয় করুন।
+
+---
+
+### 🧪 পর্ব ৪: ভেরিফিকেশন ও টেস্টিং
+
+সার্ভিসগুলো সচল কিনা দেখতে `./test_services.sh` রান করুন।
+
+---
+
+### 🔄 পর্ব ৫: রোটেশন সিস্টেম সেটআপ
+
+#### টাস্ক ৫.১: PythonAnywhere এ Cron Job
+
+`webhook_rotator.py` কোডটি PythonAnywhere এ সেট করুন যাতে আপনার বট ২৪/৭ সচল থাকে।
