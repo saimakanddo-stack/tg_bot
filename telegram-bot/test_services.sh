@@ -2,7 +2,7 @@
 echo "=== সার্ভিস স্বাস্থ্য পরীক্ষা ==="
 
 # Replace with your actual URLs after deployment
-RAILWAY_URL="https://your-app-name.up.railway.app"
+RAILWAY_URL="tgbot-production-b230.up.railway.app"
 RENDER_URL="https://your-app-render.onrender.com"
 CYCLIC_URL="https://your-app-cyclic.cyclic.app"
 KOYEB_URL="https://your-app-koyeb.app"
