@@ -1,0 +1,17 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+
+# State files
+users.json
+last_ids.json
+
+# Backups
+backup_*/
+*.zip
