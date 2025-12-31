@@ -10,7 +10,7 @@ SERVICES = {
     'cyclic': 'https://telegram-bot-cyclic.cyclic.app',
     'koyeb': 'https://telegram-bot-koyeb.app',
     'railway': 'https://your-app-name.up.railway.app',
-    'render': 'https://telegram-bot-render.onrender.com'
+    'render': 'https://tg-bot-tptf.onrender.com'
 }
 
 def set_webhook(service_name):
@@ -54,3 +54,4 @@ print("Webhook rotation system started!")
 while True:
     schedule.run_pending()
     time.sleep(60)
+
